@@ -140,7 +140,7 @@ def GibbsSampler(Dna, k, t, N):
 
 
 def main():
-    with open('E://problem_dna_sequencing/rosalind/rosalind_ba2g.txt') as f:
+    with open('/rosalind_ba2g.txt') as f:
         k, t, N = f.readline().split(' ')
         dna_list = []
         for line in f:
