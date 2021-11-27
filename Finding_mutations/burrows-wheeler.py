@@ -1,4 +1,6 @@
 def burrows_wheeler_tranform(text):
+    """Create string that produced from Burrows wheeler Transfrom.
+    input paramter is text, returns text string."""
 
     k = len(text)
     cyclic_rotation = [text[k-i:k] + text[:k-i] for i in range(k)]
@@ -12,4 +14,4 @@ def burrows_wheeler_tranform(text):
 with open('E:finding_mutations/dataset_297_5.txt', 'r') as f:
     genome_test = f.read().strip()
 
-# print(burrows_wheeler_tranform(genome_test))
+print(burrows_wheeler_tranform(genome_test))

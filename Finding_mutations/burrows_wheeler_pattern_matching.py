@@ -1,5 +1,7 @@
 
 def first_and_last_column(text):
+    """Create first and last column and stored in an array of tuples.
+    input paramter is text that is produced by burrows wheeler transfrom"""
 
     base_count = {'A': 0, 'C': 0, 'T': 0, 'G': 0, '$': 0}
     last_column = []
@@ -11,7 +13,9 @@ def first_and_last_column(text):
 
 
 def last_to_first(first_column, last_column):
-
+    """Create last to first index that store in an array.
+    input parameter are first and last and column that stored in array of tuples
+    return an array"""
     result = []
     curr_row = 0
     while len(result) != len(first_column):
@@ -23,6 +27,9 @@ def last_to_first(first_column, last_column):
 
 
 def pattern_matching_bwt(last_column, pattern, last_to_first):
+    """Using Borrws Wheeler Transform, finding the number of patter appear from a given text
+    input paramters are last column (string that is produced by BWT), pattern string, and array of last to first
+    return an integer"""
 
     pattern = list(map(lambda x: x, pattern))
     k = len(last_column)

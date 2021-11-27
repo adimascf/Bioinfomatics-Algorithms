@@ -2,6 +2,8 @@ from collections import defaultdict
 
 
 def trie_reconstruction(patterns):
+    """Create directed tree, called trie from a given patterns.
+    Input paramter is an array of strings, return a dictionary"""
 
     trie = defaultdict(dict)
 
@@ -20,14 +22,15 @@ def trie_reconstruction(patterns):
     return trie
 
 
-# with open("E:finding_mutations/dataset_294_4.txt", "r") as f:
-#     patterns_test = f.read().strip().split(' ')
+with open("E:finding_mutations/dataset_294_4.txt", "r") as f:
+    patterns_test = f.read().strip().split(' ')
 
-# result = []
-# for key, val in trie_reconstruction(patterns_test).items():
-#     for k, v in val.items():
-#         result.append([key, v, k])
+result = []
+for key, val in trie_reconstruction(patterns_test).items():
+    for k, v in val.items():
+        result.append([key, v, k])
 
-# result = sorted(result, key=lambda x: x[1])
-# for i in result:
-#     print(*i)
+result = sorted(result, key=lambda x: x[1])
+print('Internal node - Terminal node - Symbol labeling the edge')
+for i in result:
+    print(*i)

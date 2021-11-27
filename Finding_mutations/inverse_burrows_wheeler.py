@@ -1,5 +1,6 @@
 def invers_bwt(text):
-
+    """Get original text that is produced from BWT.
+    input paramter is string of text, returns a string"""
     base_count = {'A': 0, 'C': 0, 'T': 0, 'G': 0, '$': 0}
     text_count = []
     for b in text:
