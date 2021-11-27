@@ -14,7 +14,7 @@ with open("E:genomic_data/dataset_10927_3.txt", "r") as f:
 
 
 def sq_error_distortion(centers, data):
-
+    """Compute the squared error distortion of a set of data points with respect to a set of centers."""
     result = 0
     n = len(data)
     for point in data:

@@ -9,6 +9,9 @@ with open('E:genomic_data/dataset_10934_7.txt', 'r') as f:
 
 
 def hierarchical_clustering(n_genes, matrix_distance, D="avg"):
+    """Input: An integer n, followed by an n x n distance matrix.
+    Output: The result of applying HierarchicalClustering to this distance matrix (using Davg, Dmin, or Dmax), 
+    with each newly created cluster listed on each line."""
 
     clusters = [[i] for i in range(n_genes)]
 

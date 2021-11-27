@@ -24,7 +24,10 @@ def cluster_mean(data, m):
 
 
 def k_means(data, k, m):
-
+    """Implement the Lloyd algorithm for k-means clustering.
+    Input parameters are an array of tuples of ineteger of data points,
+    integer k (number of cluster), and integer m (dimension number).
+    Returns an array that consisted of k - lists of m data point for the centers"""
     centers = data[:k]
 
     while True:
@@ -54,7 +57,6 @@ if __name__ == "__main__":
             item.strip().split(" ")), data_test))
         data_test = [tuple(map(lambda x: float(x), item))
                      for item in data_test]
-
     result = k_means(data_test, int(k_test), int(m_test))
     for center in result:
         result = list(map(lambda x: format(x, ".3f"), center))
