@@ -53,12 +53,11 @@ def pattern_matching_bwt(last_column, pattern, last_to_first):
             return bottom - top + 1
 
 
-with open('E:finding_mutations/dataset_300_8.txt', 'r') as f:
+with open('E:finding_mutations/dataset_301_7.txt', 'r') as f:
     genome_test = f.readline().strip()
     patterns = f.read().strip().split(' ')
 
 first, last = first_and_last_column(genome_test)
 last_2_first = last_to_first(first, last)
-
 for pattern in patterns:
     print(pattern_matching_bwt(genome_test, pattern, last_2_first), end=' ')
