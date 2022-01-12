@@ -8,7 +8,8 @@ def limb_length(n, j, matrix):
     for k in range(n):
         if k == j or k == i:
             continue
-        min_val = min(min_val, (matrix[i][j] + matrix[k][j] - matrix[i][k])//2)
+        min_val = min(min_val,
+                      (matrix[i][j] + matrix[k][j] - matrix[i][k]) // 2)
     return min_val
 
 
@@ -43,15 +44,15 @@ def attach_node(tree, start, end, node, path_length, length_of_limb):
 
     i = 0
     while i < len(path) - 1:
-        weight = tree['edges'][path[i]][path[i+1]]
+        weight = tree['edges'][path[i]][path[i + 1]]
         if path_length <= weight:
             break
         path_length -= weight
         i += 1
 
-    if path_length < tree['edges'][path[i]][path[i+1]]:
+    if path_length < tree['edges'][path[i]][path[i + 1]]:
         a = path[i]
-        b = path[i+1]
+        b = path[i + 1]
         del tree['edges'][a][b]
         del tree['edges'][b][a]
 
@@ -65,7 +66,7 @@ def attach_node(tree, start, end, node, path_length, length_of_limb):
         tree['edges'][v][node] = length_of_limb
         tree['internal_node_counter'] += 1
     else:
-        b = path[i+1]
+        b = path[i + 1]
         tree['edges'][node] = {b: length_of_limb}
         tree['edges'][b][node] = length_of_limb
 
@@ -76,35 +77,40 @@ def additive_phylogeny(matrix, num_nodes):
     if n == 2:
         tree = {
             'edges': {
-                0: {1: matrix[0][1]},
-                1: {0: matrix[1][0]}
+                0: {
+                    1: matrix[0][1]
+                },
+                1: {
+                    0: matrix[1][0]
+                }
             },
             'num_nodes': 2,
             'internal_node_counter': num_nodes
         }
         return tree
 
-    get_limb_length = limb_length(n, n-1, matrix)
+    get_limb_length = limb_length(n, n - 1, matrix)
 
     # Compute matrix bald
-    for j in range(n-1):
-        matrix[j][n-1] -= get_limb_length
-        matrix[n-1][j] = matrix[j][n-1]
+    for j in range(n - 1):
+        matrix[j][n - 1] -= get_limb_length
+        matrix[n - 1][j] = matrix[j][n - 1]
 
     i, k = 0, 0
-    while matrix[i][k] != matrix[i][n-1] + matrix[n-1][k] or i == k:
+    while matrix[i][k] != matrix[i][n - 1] + matrix[n - 1][k] or i == k:
         k += 1
-    x = matrix[i][n-1]
+    x = matrix[i][n - 1]
 
-    trimmed_matrix = [[matrix[i][j] for j in range(n-1)] for i in range(n-1)]
+    trimmed_matrix = [[matrix[i][j] for j in range(n - 1)]
+                      for i in range(n - 1)]
     tree = additive_phylogeny(trimmed_matrix, num_nodes)
 
-    attach_node(tree, i, k, n-1, x, get_limb_length)
+    attach_node(tree, i, k, n - 1, x, get_limb_length)
 
     # restore lengths
-    for j in range(n-1):
-        matrix[j][n-1] += get_limb_length
-        matrix[n-1][j] = matrix[j][n-1]
+    for j in range(n - 1):
+        matrix[j][n - 1] += get_limb_length
+        matrix[n - 1][j] = matrix[j][n - 1]
 
     return tree
 

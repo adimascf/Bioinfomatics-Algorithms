@@ -47,7 +47,7 @@ def find_motif(protein_sequence):
     motif_positions = []
     for i in range(len(protein_sequence) - motif_length + 1):
         subs_seq = protein_sequence[i:i+4]
-        # check if the motif is found
+        # check whether the motif is found
         if subs_seq[0] == 'N' and subs_seq[1] != 'P' and subs_seq[2] in ['S', 'T'] and subs_seq[3] != 'P':
             # output using a index 1 world, so we add 1
             motif_positions.append(i+1)

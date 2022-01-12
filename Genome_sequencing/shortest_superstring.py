@@ -1,4 +1,3 @@
-
 def read_fasta(file_path):
     '''Reading fasta formatted file and returning into line'''
     with open(file_path, 'r') as f:
@@ -30,7 +29,7 @@ def read_assembly(reads_list):
             temp_seq = reads_list[i]
             l = len(temp_seq)
 
-            for start in range(l//2):
+            for start in range(l // 2):
                 end = l - start
 
                 if result.startswith(temp_seq[start:]):
@@ -42,6 +41,6 @@ def read_assembly(reads_list):
     return result
 
 
-read_dict = read_fasta('E:problem_dna_sequencing/assembly.txt')
-reads_test = list(read_dict.values())
-print(read_assembly(reads_test))
+# read_dict = read_fasta('E:problem_dna_sequencing/assembly.txt')
+# reads_test = list(read_dict.values())
+# print(read_assembly(reads_test))

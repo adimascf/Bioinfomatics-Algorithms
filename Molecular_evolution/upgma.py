@@ -1,4 +1,4 @@
-with open('E:molecular_evolution/sars_non_additive.txt', 'r') as f:
+with open('sars_non_additive.txt', 'r') as f:
     num_leaves = int(f.readline().strip())
     raw = f.readlines()
     raw0 = list(map(lambda x: x.strip().split('\t'), raw))
